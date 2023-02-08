@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.makaia.hospital.DAO.ResponseSchedule;
+import com.makaia.hospital.DTO.ResponseSchedule;
 import com.makaia.hospital.Entity.Appointment;
 import com.makaia.hospital.Enum.UserType;
 import com.makaia.hospital.Repository.AppointmentRepository;
