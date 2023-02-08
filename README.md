@@ -18,4 +18,12 @@ POST
 }
 
 GET 
+* Endpoint: http://localhost:8000/agendar/1
 
+* Respuesta: {
+    "id": 1,
+    "specialty": "Medicina G",
+    "userId": "1234567890",
+    "userType": "POLIZA",
+    "dateAppointment": "2023-02-16"
+}
