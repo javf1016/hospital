@@ -27,3 +27,6 @@ GET
     "userType": "POLIZA",
     "dateAppointment": "2023-02-16"
 }
+
+SWAGGER
+* http://localhost:8000/swagger-ui.html
