@@ -1,6 +1,10 @@
 package com.makaia.hospital.Entity;
 
+import java.time.LocalDate;
+
 import javax.persistence.*;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.makaia.hospital.Enum.UserType;
 
@@ -30,12 +34,17 @@ public class Appointment {
    @ApiModelProperty(notes = "The type of the User")
    private UserType userType;
    
+   @Column(name = "date_appointment")
+   @DateTimeFormat
+   private LocalDate dateAppointment;
+   
    public Appointment() {}
    
-   public Appointment(String specialty, String userId, UserType userType) {
+   public Appointment(String specialty, String userId, UserType userType, LocalDate dateAppointment) {
       this.specialty = specialty;
       this.userId = userId;
       this.userType = userType;
+      this.dateAppointment = dateAppointment;
    }
    
    public Long getId() {
@@ -73,6 +82,15 @@ public class Appointment {
    public void setUserType(UserType userType) {
       this.userType = userType;
    }
+
+	public LocalDate getDateAppointment() {
+		return dateAppointment;
+	}
+	
+	public void setDateAppointment(LocalDate dateAppointment) {
+		this.dateAppointment = dateAppointment;
+	}
+    
 }
 
 
