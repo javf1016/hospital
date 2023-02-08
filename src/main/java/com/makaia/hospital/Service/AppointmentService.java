@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.makaia.hospital.DAO.ResponseSchedule;
 import com.makaia.hospital.Entity.Appointment;
+import com.makaia.hospital.Enum.UserType;
 import com.makaia.hospital.Repository.AppointmentRepository;
 
 @Service
@@ -20,7 +21,7 @@ public class AppointmentService {
     private AppointmentRepository appointmentRepository;
 
     public ResponseEntity<Object> scheduleAppointment(Appointment appointment) {
-    	Appointment existAppointment = appointmentRepository.findByIdentificacionUsuarioAndTipoUsuario(appointment.getUserId(), appointment.getUserType());
+    	Appointment existAppointment = appointmentRepository.findByIdentificacionUsuarioAndTipoUsuario(appointment.getUserId(),  UserType.PARTICULAR);
 
     	if (existAppointment != null) {
     		Map<String, String> response = new HashMap<>();
