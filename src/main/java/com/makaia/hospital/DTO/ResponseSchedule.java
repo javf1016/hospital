@@ -1,4 +1,4 @@
-package com.makaia.hospital.DAO;
+package com.makaia.hospital.DTO;
 
 import java.time.LocalDate;
 
