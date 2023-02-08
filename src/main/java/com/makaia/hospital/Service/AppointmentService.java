@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.makaia.hospital.DAO.ResponseSchedule;
 import com.makaia.hospital.Entity.Appointment;
 import com.makaia.hospital.Repository.AppointmentRepository;
 
@@ -29,7 +30,12 @@ public class AppointmentService {
         
         calculateDateAppointment(appointment);
         Appointment saveAppointment = appointmentRepository.save(appointment);
-        return new ResponseEntity<>(saveAppointment, HttpStatus.CREATED);
+        ResponseSchedule responseSchedule = new ResponseSchedule(saveAppointment.getId(), saveAppointment.getDateAppointment());
+        return new ResponseEntity<>(responseSchedule, HttpStatus.CREATED);
+    }
+    
+    public ResponseEntity<Object> dateScheduleAppointment(Long id) {
+    	return new ResponseEntity<>(appointmentRepository.findById(id), HttpStatus.CREATED);
     }
     
     public Appointment calculateDateAppointment(Appointment appointment) {

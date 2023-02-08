@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +20,7 @@ import com.makaia.hospital.Service.AppointmentService;
 import io.swagger.annotations.Api;
 
 @RestController
-@RequestMapping("/schedule")
+@RequestMapping("/agendar")
 @Api(value = "Appointment Management System", description = "Operations related to appointments")
 public class AppointmentController {
 
@@ -26,7 +28,7 @@ public class AppointmentController {
     private AppointmentService appointmentService;
 
 	@PostMapping
-	public ResponseEntity<Object> agendarCitaMedica(@Validated @RequestBody Appointment appointment) {
+	public ResponseEntity<Object> scheduleAppointment(@Validated @RequestBody Appointment appointment) {
 		try {
 			return appointmentService.scheduleAppointment(appointment);
 		} catch (HttpMessageNotReadableException e) {
@@ -35,6 +37,12 @@ public class AppointmentController {
 			}
 			return new ResponseEntity<>(new ErrorResponse("Error desconocido"), HttpStatus.BAD_REQUEST);
 		}
+	}
+	
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Object> dateScheduleAppointment(@PathVariable Long id) {
+		return appointmentService.dateScheduleAppointment(id);
 	}
     
 }
